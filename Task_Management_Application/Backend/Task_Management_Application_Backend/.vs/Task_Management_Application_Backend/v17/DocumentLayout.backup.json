@@ -1,12 +1,105 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Task_Management_Application\\Task_Management_Application\\Backend\\Task_Management_Application_Backend\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8550CB37-B146-420A-9CC9-1A72DEB9DE1B}|Task_Management_Application_Backend\\Task_Management_Application_Backend.csproj|d:\\task_management_application\\task_management_application\\backend\\task_management_application_backend\\task_management_application_backend\\dto\\taskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8550CB37-B146-420A-9CC9-1A72DEB9DE1B}|Task_Management_Application_Backend\\Task_Management_Application_Backend.csproj|solutionrelative:task_management_application_backend\\dto\\taskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8550CB37-B146-420A-9CC9-1A72DEB9DE1B}|Task_Management_Application_Backend\\Task_Management_Application_Backend.csproj|d:\\task_management_application\\task_management_application\\backend\\task_management_application_backend\\task_management_application_backend\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8550CB37-B146-420A-9CC9-1A72DEB9DE1B}|Task_Management_Application_Backend\\Task_Management_Application_Backend.csproj|solutionrelative:task_management_application_backend\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8550CB37-B146-420A-9CC9-1A72DEB9DE1B}|Task_Management_Application_Backend\\Task_Management_Application_Backend.csproj|d:\\task_management_application\\task_management_application\\backend\\task_management_application_backend\\task_management_application_backend\\models\\taskmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8550CB37-B146-420A-9CC9-1A72DEB9DE1B}|Task_Management_Application_Backend\\Task_Management_Application_Backend.csproj|solutionrelative:task_management_application_backend\\models\\taskmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8550CB37-B146-420A-9CC9-1A72DEB9DE1B}|Task_Management_Application_Backend\\Task_Management_Application_Backend.csproj|d:\\task_management_application\\task_management_application\\backend\\task_management_application_backend\\task_management_application_backend\\services\\taskstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8550CB37-B146-420A-9CC9-1A72DEB9DE1B}|Task_Management_Application_Backend\\Task_Management_Application_Backend.csproj|solutionrelative:task_management_application_backend\\services\\taskstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8550CB37-B146-420A-9CC9-1A72DEB9DE1B}|Task_Management_Application_Backend\\Task_Management_Application_Backend.csproj|d:\\task_management_application\\task_management_application\\backend\\task_management_application_backend\\task_management_application_backend\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8550CB37-B146-420A-9CC9-1A72DEB9DE1B}|Task_Management_Application_Backend\\Task_Management_Application_Backend.csproj|solutionrelative:task_management_application_backend\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\Task_Management_Application\\Task_Management_Application\\Backend\\Task_Management_Application_Backend\\Task_Management_Application_Backend\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Task_Management_Application_Backend\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\Task_Management_Application\\Task_Management_Application\\Backend\\Task_Management_Application_Backend\\Task_Management_Application_Backend\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Task_Management_Application_Backend\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T06:48:27.226Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TaskStatus.cs",
+              "DocumentMoniker": "D:\\Task_Management_Application\\Task_Management_Application\\Backend\\Task_Management_Application_Backend\\Task_Management_Application_Backend\\Services\\TaskStatus.cs",
+              "RelativeDocumentMoniker": "Task_Management_Application_Backend\\Services\\TaskStatus.cs",
+              "ToolTip": "D:\\Task_Management_Application\\Task_Management_Application\\Backend\\Task_Management_Application_Backend\\Task_Management_Application_Backend\\Services\\TaskStatus.cs",
+              "RelativeToolTip": "Task_Management_Application_Backend\\Services\\TaskStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T06:43:41.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TaskModel.cs",
+              "DocumentMoniker": "D:\\Task_Management_Application\\Task_Management_Application\\Backend\\Task_Management_Application_Backend\\Task_Management_Application_Backend\\Models\\TaskModel.cs",
+              "RelativeDocumentMoniker": "Task_Management_Application_Backend\\Models\\TaskModel.cs",
+              "ToolTip": "D:\\Task_Management_Application\\Task_Management_Application\\Backend\\Task_Management_Application_Backend\\Task_Management_Application_Backend\\Models\\TaskModel.cs",
+              "RelativeToolTip": "Task_Management_Application_Backend\\Models\\TaskModel.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBQAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T06:14:27.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TaskDTO.cs",
+              "DocumentMoniker": "D:\\Task_Management_Application\\Task_Management_Application\\Backend\\Task_Management_Application_Backend\\Task_Management_Application_Backend\\DTO\\TaskDTO.cs",
+              "RelativeDocumentMoniker": "Task_Management_Application_Backend\\DTO\\TaskDTO.cs",
+              "ToolTip": "D:\\Task_Management_Application\\Task_Management_Application\\Backend\\Task_Management_Application_Backend\\Task_Management_Application_Backend\\DTO\\TaskDTO.cs",
+              "RelativeToolTip": "Task_Management_Application_Backend\\DTO\\TaskDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T05:55:53.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TasksController.cs",
+              "DocumentMoniker": "D:\\Task_Management_Application\\Task_Management_Application\\Backend\\Task_Management_Application_Backend\\Task_Management_Application_Backend\\Controllers\\TasksController.cs",
+              "RelativeDocumentMoniker": "Task_Management_Application_Backend\\Controllers\\TasksController.cs",
+              "ToolTip": "D:\\Task_Management_Application\\Task_Management_Application\\Backend\\Task_Management_Application_Backend\\Task_Management_Application_Backend\\Controllers\\TasksController.cs",
+              "RelativeToolTip": "Task_Management_Application_Backend\\Controllers\\TasksController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAA0wD4AAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T05:36:10.838Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
