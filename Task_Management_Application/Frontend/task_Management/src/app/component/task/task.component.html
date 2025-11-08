@@ -1,0 +1,96 @@
+<div class="container mt-5">
+  
+      <div class="d-flex justify-content-between align-items-center mb-5">
+        <h4 class="fw-bold">Task Management Application</h4>
+        <button class="btn btn-primary" (click) = "addTask()">Add Task</button>
+      </div>
+
+      <div class="d-flex gap-5 mb-5" *ngIf = "disable_search_filter">
+        <input
+  type="text"
+  class="form-control"
+  placeholder="Search by title..."
+  [(ngModel)]="searchText"
+  (input)="filterTasks()"
+/>
+
+
+<select
+  class="form-select"
+  [(ngModel)]="selectedStatus"
+  (change)="filterTasks()"
+>
+  <option value="">All Status</option>
+  <option value="Pending">Pending</option>
+  <option value="InProgress">InProgress</option>
+  <option value="Completed">Completed</option>
+</select>
+
+</div>
+
+
+
+
+      <div class="row justify-content-center" *ngIf="formVisible">
+        <div class="col-12 col-md-5">
+          <div class="card shadow-lg rounded p-4 border-0">
+            <h4 class="text-center mb-4 text-primary">{{ isEditMode ? 'Update Task' : 'Add New Task' }}</h4>
+            <form [formGroup] = "formDetails" (ngSubmit) ="createTask()">
+              <input type="hidden" placeholder="UserName" name="id" formControlName="id"><br>
+              <div class="mb-3">
+                <label for="title" class="form-label fw-bold">Title</label>
+                <input type="text" id="title" name="title" class="form-control rounded" formControlName="title" placeholder="Enter task title" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="description" class="form-label fw-bold">Description</label>
+                <input type="text" id="description" name="description" class="form-control rounded" formControlName="description" placeholder="Enter task description">
+              </div>
+
+              <div class="mb-3">
+                <label for="status" class="form-label fw-bold">Status</label>
+                <select id="status" name="status" formControlName="status" class="form-select rounded">
+                  <option value="Pending">Pending</option>
+                  <option value="InProgress">In Progress</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </div>
+
+              <div class="d-flex justify-content-between mt-4">
+                <button type="submit" class="btn btn-success  flex-fill me-2">{{ isEditMode ? 'Update Task' : 'Create Task' }}</button>
+                <button type="button" class="btn btn-secondary  flex-fill ms-2" (click) = "close()">Close</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+      <table class="table" *ngIf="displaytable">
+        <thead class="table-light">
+          <tr>
+            <th>S.No</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>CreatedAt</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let v of filteredTasks; let i = index">
+            <td>{{i +1}}</td>
+            <td>{{v.title}}</td>
+            <td>{{v.description}}</td>
+            <td>{{ v.createdAt | date:'dd-MM-yyyy hh:mm a' }}</td>
+            <td>{{v.status}}</td>
+            <td>
+              <button class="btn btn-sm btn-outline-secondary me-2" (click) = "EditTask(v)"><i class="bi bi-pencil"></i></button>
+              <button class="btn btn-sm btn-outline-danger" (click) = "confirmDelete(v.id)"><i class="bi bi-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+</div>

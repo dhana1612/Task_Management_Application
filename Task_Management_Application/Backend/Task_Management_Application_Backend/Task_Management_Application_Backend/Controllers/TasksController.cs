@@ -27,7 +27,7 @@ namespace Task_Management_Application_Backend.Controllers
 
                 if (tasks == null || !tasks.Any())
                 {
-                    return NotFound("No tasks found.");
+                    return Ok(new { Message = "No Record Found" });
                 }
 
                 TimeZoneInfo istZone = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
@@ -111,7 +111,7 @@ namespace Task_Management_Application_Backend.Controllers
                 }
                 _context.TaskRecords.Remove(task);
                 await _context.SaveChangesAsync();
-                return NoContent();
+                return Ok("Task Deleted Successfully");
             }
             catch (Exception ex)
             {
