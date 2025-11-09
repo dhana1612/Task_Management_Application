@@ -23,8 +23,8 @@ export class TaskServiceService {
   }
 
   CreateTask(task : taskModel) :Observable<string>{
-    debugger
-    return this.http.post(`${this.apiUrl}/CreateTask`, task, { responseType: 'text' })
+    console.log(task)
+    return this.http.post(`${this.apiUrl}/CreateTask`, task,{ responseType: 'text' })
   }
 
   UpdateTask(id:number, task :taskModel) : Observable<string>{

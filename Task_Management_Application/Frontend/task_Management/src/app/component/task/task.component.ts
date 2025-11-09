@@ -1,181 +1,201 @@
-import { Component, OnInit } from '@angular/core';
-import { TaskServiceService } from '../../task-service.service';
+import { Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {taskModel } from '../../Model/Task_Model';
+import { TaskServiceService } from '../../task-service.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { taskModel } from '../../Model/Task_Model';
 
 @Component({
   selector: 'app-task',
-  imports: [CommonModule,ReactiveFormsModule, FormsModule],
+  imports: [CommonModule,FormsModule,ReactiveFormsModule],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'
 })
 export class TaskComponent implements OnInit {
 
-  constructor(private taskService :TaskServiceService){}
+  constructor(private taskService : TaskServiceService){}
 
-  ngOnInit(){
-    this.GetAllTasks();
+  ngOnInit() {
+    this.GetAllTasks()
   }
 
-  selectedStatus: string = ''; // holds dropdown filter value
-
-  searchText: string = '';
-  task1Details: taskModel[] = [];
-  filteredTasks: taskModel[] = [];
-
-  taskDetails :any;
-  displaytable : boolean = false;
-  disable_search_filter : boolean = true;
-  formVisible : boolean = false;
-  isEditMode :boolean = false;
-
-
-
+//ReactiveFormModel
   formDetails = new FormGroup(
     {
-      id : new FormControl(),
+      id : new FormControl(0),
       title : new FormControl(''),
       description : new FormControl(''),
-      status :new FormControl('Pending'),
+      status :new FormControl('Pending')
     }
   )
 
+//Variable
+  taskDetails : taskModel[] = []
+  filteredTasks: taskModel[] =[]
+  sendDetails : any
+  visible : boolean = true;
+  formVisible :boolean = false;
+  editMode :boolean = false;
+  searchText: string = '';
+  selectedStatus :string ="";
+  successMessage: string = '';
+  errorMessage : string = "";
 
 
-  addTask() {
-    this.disable_search_filter = false;
-    this.displaytable = false;
-    this.formVisible = true;
-    this.isEditMode = false;
-    this.formDetails.reset({ status: 'Pending' });
-  }
-
-  close(){
-    this.disable_search_filter = true;
-    this.formVisible = false;
-    this.displaytable =true;
-
-  }
 
 
-  createTask(){
-
-   if (!this.isEditMode) {
-      
-    this.taskDetails = this.formDetails.value;
-      this.taskService.CreateTask( this.taskDetails).subscribe({
-        next: res => {
-          console.log(res);
-          this.GetAllTasks();
-          this.formDetails.reset({ status: 'Pending' });
-          this.disable_search_filter = true;
-          this.formVisible = false;
-          this.displaytable = true;
-        },
-          error : err =>{
-            console.log(err)
-          }
-        }
-      )
-
-    }
-    else{
-      this.taskDetails = this.formDetails.value;
-      console.log(this.taskDetails)
-
-      this.taskService.UpdateTask(this.taskDetails.id,this.taskDetails,).subscribe(
-        {
-          next : res => {
-            console.log(res) 
-            this.disable_search_filter = true;
-            this.formVisible = false;
-            this.displaytable =true;
-            this.isEditMode = false;
-            this.GetAllTasks()
-            this.formDetails.setValue({
-              id : 0,
-              title : "",
-              description : "",
-              status : ""
-            })
-          },
-          error : err =>{
-            console.log(err)
-          }
-        }
-      )
-    }
-
-
-    
-  }
-
+//Display all details
   GetAllTasks(){
     this.taskService.GetAllTasks().subscribe(
       {
-        next :res => {
-          if(res.length >0){
-            this.displaytable = true ;
-            this.task1Details = res;
-            this.filteredTasks = res;
-          }
-          else {
-            this.displaytable = false ;
-          }
+        next : response =>{
+          this.taskDetails = response
+          this.filteredTasks = response
         },
-        error :err => {
-          console.error('API Error:', err);
+        error : errResponse =>{
+          this.errorMsg(errResponse)
         }
-      }
-    );
-  }
 
-
-  DeleteTask(id :number){
-    this.taskService.DeleteTask(id).subscribe(
-      {
-        next :res => {
-          console.log(res)
-          this.GetAllTasks()
-        },
-        error :err =>{
-          console.error('API Error:', err);
-        }
       }
     )
   }
 
-  confirmDelete(id: number) {
+//Delete the task
+  confirmDelete(id :number){
     const result = window.confirm("Are you sure you want to delete this task?");
     if (result) {
       this.DeleteTask(id);
     }
   }
 
-
-  EditTask(value :any){
-    console.log(value)
-    this.isEditMode = true;
-    this.addTask()
-    this.formDetails.setValue({
-      id : value.id,
-      title : value.title,
-      description : value.description,
-      status : value.status
-    })
+  DeleteTask(id :number){
+    this.taskService.DeleteTask(id).subscribe(
+      {
+        next : response => {
+          this.successMsg(response)
+          this.GetAllTasks()
+        },
+        error : errResponse =>{
+          this.errorMsg(errResponse)
+        }
+      }
+    )
   }
 
+//Add Button
+  addTaskBtn(){
+    this.visible = false
+    this.formVisible = true
+  }
 
-filterTasks(): void {
-  const search = this.searchText.trim().toLowerCase();
-  const status = this.selectedStatus;
+//Edit Button
+  editBtn(task :taskModel){
+    this.editMode = true;
+    this.visible=false;
+    this.formVisible = true
+    this.formDetails.setValue({
+      id : task.id,
+      title : task.title,
+      description : task.description,
+      status : task.status
+    })
 
-  this.filteredTasks = this.task1Details.filter((task: taskModel) => {
+  }
+
+//Close Button
+  closeBtn(){
+    this.visible = true
+    this.formVisible = false
+    this.editMode = false;
+    this.formReset()
+  }
+
+//Decision Making   
+  decisionMode(){
+    if(!this.editMode){
+      this.createTask();
+    }
+    else{
+      this.updateTask()
+    }
+  }
+
+// Add New Task
+  createTask()
+  {
+    this.sendDetails = this.formDetails.value
+    this.taskService.CreateTask(this.sendDetails).subscribe(
+      {
+        next : res => {
+            this.successMsg(res)
+            this.GetAllTasks()
+            this.formReset()
+            this.sendDetails = null;
+            this.formVisible = false;
+            this.visible = true
+          },
+          error : err =>{
+            this.errorMsg(err)
+          }
+      }
+    )
+  }
+
+//Update Task
+  updateTask(){
+    this.sendDetails = this.formDetails.value
+          this.taskService.UpdateTask(this.sendDetails.id,this.sendDetails,).subscribe(
+        {
+          next : res => {
+            this.successMsg(res)
+            this.GetAllTasks()
+            this.formReset()
+            this.formVisible = false;
+            this.visible = true
+            this.sendDetails = null;
+          },
+          error : err =>{
+            this.errorMsg(err)
+          }
+        }
+      )
+  }
+
+//Form Reset
+  formReset(){
+    this.formDetails.setValue({
+              id : 0,
+              title : "",
+              description : "",
+              status : "Pending"
+            })
+  }
+
+//Filter 
+  filterTasks(){
+    const search = this.searchText.trim().toLowerCase();
+    const status = this.selectedStatus;
+
+    this.filteredTasks = this.taskDetails.filter((task: taskModel) => {
     const matchesTitle = task.title?.toLowerCase().includes(search);
     const matchesStatus = status === '' || task.status === status;
     return matchesTitle && matchesStatus;
   });
-}
+
+  }
+
+  successMsg(message: string) {
+    this.successMessage = message;
+    setTimeout(() => {
+      this.successMessage = '';
+    }, 3000); 
+  }
+
+  errorMsg(message: string) {
+    this.errorMessage = message;
+    setTimeout(() => {
+      this.errorMessage = '';
+    }, 3000); 
+  }
 
 }
+  

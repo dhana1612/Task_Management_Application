@@ -27,7 +27,7 @@ namespace Task_Management_Application_Backend.Controllers
 
                 if (tasks == null || !tasks.Any())
                 {
-                    return Ok(new { Message = "No Record Found" });
+                    return Ok ("No Record Found" );
                 }
 
                 TimeZoneInfo istZone = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
@@ -47,49 +47,23 @@ namespace Task_Management_Application_Backend.Controllers
 
         
         
-        [HttpGet("GetTaskById/{id}")]
-        public async Task<ActionResult<TaskModel>> GetTaskById(int id)
-        {
-            try
-            {
-                var task = await _context.TaskRecords.FindAsync(id);
-
-                
-                if (task == null)
-                {
-                    return NotFound($"Task with ID {id} not found.");
-                }
-
-                TimeZoneInfo istZone = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
-                task.CreatedAt = TimeZoneInfo.ConvertTimeFromUtc(task.CreatedAt, istZone);
-
-                return Ok(task);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal Server Error: {ex.Message}");
-            }
-        }
-
-
-       
         [HttpPost("CreateTask")]
-        public async Task<ActionResult> CreatedTask(TaskDTO task)
+        public async Task<ActionResult> CreatedTask([FromBody] TaskDTO createTask)
         {
             try
             {
                 var newTask = new TaskModel
                 {
-                    Title = task.Title,
-                    Description = task.Description,
-                    Status = task.Status,
+                    Title = createTask.Title,
+                    Description = createTask.Description,
+                    Status = createTask.Status,
                     CreatedAt = DateTime.UtcNow
                 };
 
                 await _context.TaskRecords.AddAsync(newTask);
                 await _context.SaveChangesAsync();
 
-                return Ok(new { Message = "Task created successfully" });
+                return Ok("Save Successfully");
             }
             catch (Exception ex)
             {
@@ -143,7 +117,7 @@ namespace Task_Management_Application_Backend.Controllers
                 existingTask.Status = updatedTask.Status;
                 _context.Entry(existingTask).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
-                return NoContent();
+                return Ok("Updated Successfully");
             }
             catch (Exception ex)
             {
