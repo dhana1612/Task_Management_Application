@@ -78,8 +78,7 @@
   <h4>4️⃣ <b>Run the Angular Application</b></h4>
   <pre><code>ng serve</code></pre>
 
-  <p>Then open your browser and visit:<br>
-  👉 <b>http://localhost:4200</b></p>
+
 
   <hr>
 
