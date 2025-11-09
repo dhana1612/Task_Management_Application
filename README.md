@@ -45,9 +45,7 @@
   <pre><code>dotnet run</code></pre>
   <p><i>or simply press <b>F5</b> in Visual Studio.</i></p>
 
-  <p>After running, open <b>Swagger UI</b> at:<br>
-  👉 <b>https://localhost:{port}/swagger</b></p>
-
+ 
   <hr>
 
   <h2>💻 <b>Frontend — Angular Application</b></h2>
@@ -85,36 +83,4 @@
 
   <hr>
 
-  <h2>📘 <b>Summary</b></h2>
-
-  <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%;">
-    <thead style="background-color: #f2f2f2;">
-      <tr>
-        <th>Layer</th>
-        <th>Framework</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><b>Backend</b></td>
-        <td>.NET 9 Web API</td>
-        <td>Provides REST endpoints for task operations</td>
-      </tr>
-      <tr>
-        <td><b>Database</b></td>
-        <td>PostgreSQL</td>
-        <td>Stores task data</td>
-      </tr>
-      <tr>
-        <td><b>Frontend</b></td>
-        <td>Angular 17+</td>
-        <td>User Interface for managing tasks</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <hr>
-
-  <p><b>✅ Your application is now ready to use!</b><br>
-  Manage tasks seamlessly using a clean and responsive UI powered by <b>Angular</b> and <b>.NET Web API</b>.</p>
+ 
